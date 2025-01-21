@@ -2,7 +2,7 @@
 
 // Here, we create our main function.
 function fizzbuzz() {
-    for (let i = 1; i <= 100; i++) {
+    for (let i = 1; i <= 200; i++) {
         console.log(getFizzBuzzOutput(i));
     }
 }
@@ -14,6 +14,9 @@ function getFizzBuzzOutput(i) {
     }
     if (i % 5 === 0) {
         output += 'Buzz';
+    }
+    if (i % 7 === 0) {
+        output += 'Bang';
     }
     if (output !== '') {
         return output
