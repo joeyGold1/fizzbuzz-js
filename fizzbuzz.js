@@ -1,5 +1,4 @@
-
-
+const basicRules = {3: 'Fizz', 5: 'Buzz', 7: 'Bang'}
 // Here, we create our main function.
 function fizzbuzz() {
     for (let i = 1; i <= 200; i++) {
@@ -9,14 +8,10 @@ function fizzbuzz() {
 
 function getFizzBuzzOutput(i) {
     let output = '';
-    if (i % 3 === 0) {
-        output += 'Fizz';
-    }
-    if (i % 5 === 0) {
-        output += 'Buzz';
-    }
-    if (i % 7 === 0) {
-        output += 'Bang';
+    for (let key in basicRules) {
+        if (i % key === 0) {
+            output += basicRules[key]
+        }
     }
     if (i % 11 === 0) {
         output = 'Bong';
@@ -24,6 +19,7 @@ function getFizzBuzzOutput(i) {
     if (output !== '') {
         return output
     }
+
     return i;
 }
 
