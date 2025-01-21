@@ -8,12 +8,15 @@ function fizzbuzz() {
 }
 
 function getFizzBuzzOutput(i) {
-    if (i % 3 == 0 && i % 5 == 0) {
-        return 'FizzBuzz'
-    } else if (i % 3 == 0) {
-        return 'Fizz';
-    } else if (i % 5 == 0) {
-        return 'Buzz';
+    let output = '';
+    if (i % 3 === 0) {
+        output += 'Fizz';
+    }
+    if (i % 5 === 0) {
+        output += 'Buzz';
+    }
+    if (output !== '') {
+        return output
     }
     return i;
 }
