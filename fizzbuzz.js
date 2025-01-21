@@ -1,29 +1,40 @@
-const basicRules = {3: 'Fizz', 13: 'Fezz', 5: 'Buzz', 7: 'Bang'}
-// Here, we create our main function.
-function fizzbuzz() {
-    for (let i = 1; i <= 260; i++) {
-        console.log(getFizzBuzzOutput(i));
-    }
+const addToOutput = (toAdd) => (output) => {
+    output.push(toAdd);
+    return output;
+};
+const bongRule = (output) => {
+    output = output.filter((val) => val === 'Fezz')
+    addToOutput('Bong')(output)
+    return output;
 }
+const reverseRule = (output) => output.reverse();
+const rules = [
+    [3, addToOutput('Fizz')],
+    [13, addToOutput('Fezz')],
+    [5, addToOutput('Buzz')],
+    [7, addToOutput('Bang')],
+    [11, bongRule],
+    [17, reverseRule]
+];
 
 function getFizzBuzzOutput(i) {
     let output = [];
-    for (let key in basicRules) {
-        if (i % key === 0) {
-            output.push(basicRules[key]);
+    for (const rule of rules) {
+        if (i % rule[0] === 0) {
+            output = rule[1](output);
         }
-    }
-    if (i % 11 === 0) {
-        output = output.filter((val) => val === 'Fezz')
-        output.push('Bong');
-    }
-    if(i % 17 === 0) {
-        output.reverse();
     }
     if (output.length !== 0) {
         return output.join('');
     }
     return i;
+}
+
+// Here, we create our main function.
+function fizzbuzz() {
+    for (let i = 1; i <= 260; i++) {
+        console.log(getFizzBuzzOutput(i));
+    }
 }
 
 // Now we run the main function...
